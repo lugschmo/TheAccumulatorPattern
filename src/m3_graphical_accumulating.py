@@ -9,8 +9,8 @@ Additionally, it emphasizes that you must
 before you can implement a solution to the problem in Python.
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Mitch Lugsch.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -96,7 +96,7 @@ def draw_parallel_lines(n, point, length, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -109,6 +109,27 @@ def draw_parallel_lines(n, point, length, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+
+    x = point.x  # Initialize x and y BEFORE the loop
+    y = point.y
+
+    for _ in range(n):  # Loop that does NOT use its index variable
+
+        # --------------------------------------------------------------
+        # Construct the relevant object(s),
+        # based on the current x, y and other variables.
+        # --------------------------------------------------------------
+        left_most_point = rg.Point(x, y)
+        right_most_point = rg.Point(x + length, y)
+        line = rg.Line(left_most_point, right_most_point)
+
+        # Attach the object(s) to the window.
+        line.attach_to(window)
+
+        # Increment y by 30
+        y = y + 30
+
+    window.render()
 
 
 def run_test_draw_lines():
