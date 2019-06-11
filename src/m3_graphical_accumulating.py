@@ -182,7 +182,7 @@ def draw_lines(n, point, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -195,6 +195,29 @@ def draw_lines(n, point, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+
+    x = point.x  # Initialize x and y BEFORE the loop
+    y = point.y
+    left_most_point = rg.Point(x, y)
+
+    for _ in range(n):  # Loop that does NOT use its index variable
+
+        # --------------------------------------------------------------
+        # Construct the relevant object(s),
+        # based on the current x, y and other variables.
+        # --------------------------------------------------------------
+        right_most_point = rg.Point(x + 100, y - 100)
+        line = rg.Line(left_most_point, right_most_point)
+
+        # Attach the object(s) to the window.
+        line.attach_to(window)
+
+        # --------------------------------------------------------------
+        # Increment y
+        # --------------------------------------------------------------
+        y = y + (200 / (n - 1))
+
+    window.render()
 
 
 # ----------------------------------------------------------------------
