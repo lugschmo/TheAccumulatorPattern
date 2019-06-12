@@ -354,7 +354,7 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
       :type window: rg.RoseWindow
       """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -367,6 +367,56 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+
+    center_R1 = rectangle1.get_center()
+    center_R2 = rectangle2.get_center()
+    width_R1 = rectangle1.get_width()
+    height_R1 = rectangle1.get_height()
+
+    x1 = center_R1.x
+    y1 = center_R1.y
+    x2 = center_R2.x
+    y2 = center_R2.y
+
+    rectangle1.attach_to(window)
+    rectangle2.attach_to(window)
+
+    for k in range(n):
+
+        if (k + 1) % 2 == 0:
+            start = rg.Point(x1, y1)
+            end = rg.Point(x2, y2)
+            line = rg.Line(start, end)
+            line.thickness = 5
+            line.color = rectangle2.outline_color
+
+            # Attach the object(s) to the window.
+            line.attach_to(window)
+
+            # Increment variables
+            x1 = x1 - (width_R1 / 2)
+            y1 = y1 + (height_R1 / 2)
+            x2 = x2 - (width_R1 / 2)
+            y2 = y2 + (height_R1 / 2)
+
+        else:
+            start = rg.Point(x1, y1)
+            end = rg.Point(x2, y2)
+            line = rg.Line(start, end)
+            line.thickness = 5
+            line.color = rectangle1.outline_color
+
+            # Attach the object(s) to the window.
+            line.attach_to(window)
+
+            # Increment variables
+            x1 = x1 - (width_R1 / 2)
+            y1 = y1 + (height_R1 / 2)
+            x2 = x2 - (width_R1 / 2)
+            y2 = y2 + (height_R1 / 2)
+
+
+    window.render()
 
 
 # ----------------------------------------------------------------------
